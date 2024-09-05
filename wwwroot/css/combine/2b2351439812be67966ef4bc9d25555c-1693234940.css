@@ -1,0 +1,33 @@
+﻿
+@media only screen and (max-width: 1200px) {
+
+    body,
+    .font_medium,
+    .ll-widger-rounder-button,
+    .nav,
+    button,
+    select,
+    input {
+        font-size: 1.3vw;
+    }
+
+    .frame-size-80 {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .frame-size-70 {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .frame-size-60 {
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .frame-size-50 {
+        width: 50%;
+        margin-left: 25%;
+    }
+}

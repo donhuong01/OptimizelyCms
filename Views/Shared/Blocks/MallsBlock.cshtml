@@ -1,0 +1,20 @@
+﻿@using Blend.Cms12.Models.Blocks.Malls
+@model MallsBlock
+
+<!-- Section 4 - Malls -->
+<div class="home-section-4 ll-frame frame-size-70 content-center height-auto">
+    <span class="title font-type-2 bold font_x_extreme box-size-100 padding-box-5">@Model.Title</span>
+    <div class="ll-mall-wrapper padding-box-2">
+        @if (Model?.Malls?.Items != null)
+        {
+            @foreach (var item in Model.Malls.Items)
+            {
+                var block = item?.GetContent() as ParticipatingMallBlock;
+                if (block != null)
+                {
+                    await Html.RenderPartialAsync("ParticipatingMallBlock", block);
+                }
+            }
+        }
+    </div>
+</div>

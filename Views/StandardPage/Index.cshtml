@@ -1,0 +1,16 @@
+@inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<Blend.Cms12.Models.Pages.StandardPage>>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+@{
+    foreach (var item in Model.CurrentPage.MainContentArea?.FilteredItems ?? Enumerable.Empty<ContentAreaItem>())
+    {
+        var content = item.GetContent();
+
+        if (content != null)
+        {
+            Html.RenderContentData(content, false);
+        }
+    }
+}

@@ -1,0 +1,167 @@
+﻿
+@media only screen and (max-width: 415px) {
+
+
+    body,
+    .ll-widget-rounder-button,
+    .font_medium,
+    .nav,
+    button,
+    textarea,
+    select,
+    input,
+    h4 {
+        font-size: 3.8vw;
+    }
+
+    body {
+        line-height: 1.8em;
+    }
+
+    #ll-banner {
+        font-size: 3vw;
+    }
+
+    .ll-widget-rounder-button {
+    }
+
+
+    .font_large,
+    h3 {
+        font-size: 110%;
+    }
+
+    .font_larger,
+    h2 {
+        font-size: 120%;
+    }
+
+    .font_extreme,
+    h1 {
+        font-size: 130%;
+    }
+
+    .font_x_extreme,
+    .tab-group {
+        font-size: 140%;
+    }
+
+    .font_xx_extreme {
+        font-size: 160%;
+    }
+
+
+    .font_xxx_extreme,
+    .ll-widget-lb-title {
+        font-size: 180%;
+    }
+
+
+    .margin-bottom-tiny {
+        /* margin-bottom: 2pt; */
+        margin-bottom: 1vw;
+    }
+
+    .margin-bottom-medium {
+        margin-bottom: 1.25vw;
+    }
+
+    .margin-bottom-large {
+        margin-bottom: 1.5vw;
+    }
+
+    .margin-bottom-larger {
+        margin-bottom: 1.75vw;
+    }
+
+
+    .margin-bottom-extreme-larger {
+        margin-bottom: 2vw;
+    }
+
+
+    .margin-bottom-x-extreme {
+        margin-bottom: 2.25vw;
+    }
+
+    .margin-bottom-xx-extreme {
+        margin-bottom: 2.5vw;
+    }
+
+    .margin-bottom-xxx-extreme {
+        margin-bottom: 2.75vw;
+    }
+
+    .margin-top-tiny {
+        margin-top: 1vw;
+    }
+
+    .margin-top-medium {
+        margin-top: 1.25vw;
+    }
+
+    .margin-top-large {
+        margin-top: 1.5vw;
+    }
+
+    .margin-top-larger {
+        margin-top: 1.75vw;
+    }
+
+    .margin-top-extreme {
+        margin-top: 2vw;
+    }
+
+
+    .margin-top-x-extreme {
+        margin-top: 2.25vw;
+    }
+
+    .margin-top-xx-extreme {
+        margin-top: 2.5vw;
+    }
+
+    .margin-bottom-xxx-extreme {
+        margin-bottom: 2.75vw;
+    }
+
+    .child-space-ver-5 > * {
+        margin-top: 1vw;
+    }
+
+    .child-space-ver-10 > * {
+        margin-top: 2vw;
+    }
+
+    .child-space-ver-15 > * {
+        margin-top: 2vw;
+    }
+
+    .child-space-ver-20 > * {
+        margin-top: 4vw;
+    }
+
+    .child-space-ver-25 > * {
+        margin-top: 5vw;
+    }
+
+    .child-space-horz-5 > * {
+        margin-left: 1vw;
+    }
+
+    .child-space-horz-10 > * {
+        margin-left: 2vw;
+    }
+
+    .child-space-horz-15 > * {
+        margin-left: 3vwt;
+    }
+
+    .child-space-horz-20 > * {
+        margin-left: 4vw;
+    }
+
+    .child-space-horz-25 > * {
+        margin-left: 5vw;
+    }
+}

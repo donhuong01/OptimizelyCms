@@ -1,0 +1,19 @@
+﻿@using Blend.Cms12.Models.Blocks.PromotionEvent
+@using EPiServer.Core
+
+@model AboutInforBlock
+
+<div class="home-section-2 ll-frame frame-size-70 border-bottom-dark"
+     style="background-image: url('@Url.ContentUrl(Model.BackgroundImage)')">
+    <div class="ll-widget-box box-size-60 child-space-ver-10 padding-box-top-bot-30 content-center">
+        <span class="ll-widget-lb-title">@Model.MainTitle</span>
+        <br />
+        <span class="ll-widget-lb-default margin-bottom-larger box-size-100">
+           @Model.Decription
+        </span>
+        <a class="ll-widget-rounder-button" href="@Url.ContentUrl(Model.ButtonLink)"
+           rel="noreferrer">
+            <span>@Model.ButtonText</span>
+        </a>
+    </div>
+</div>

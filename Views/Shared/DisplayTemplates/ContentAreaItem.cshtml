@@ -1,0 +1,6 @@
+﻿@model EPiServer.Core.ContentAreaItem
+
+@if (Model.GetContent() != null)
+{
+    Html.RenderContentData(Model.GetContent(), false);
+}

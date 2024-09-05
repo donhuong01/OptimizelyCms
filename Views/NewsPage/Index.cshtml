@@ -1,0 +1,20 @@
+@model PageViewModel<NewsPage>
+
+<div id='ll-promo-list' class="ll-promo-wrapper box-size-100 ll-slideShow" ll-percent-space='3'>
+    <ul class="sld-wrapper">
+        <div epi-property="@Model.CurrentPage.NewsList" />
+    </ul>
+</div>
+
+<div class="frame-size-70 content-center height-auto margin-bottom-larger">
+    <a id="btn_loadmore" class="btn_loadmore ll-widget-rounder-button margin-bottom-large">
+        <span>Scroll down to load more</span></a>
+</div>
+<script>
+    var allowLoadMore = true;
+</script>
+</div>
+<script>
+    var isPromoActive = true;
+    var url = "https://www.lendleaseplus.com/happenings/promotions";
+</script>

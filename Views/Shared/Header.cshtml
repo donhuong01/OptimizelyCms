@@ -1,0 +1,57 @@
+﻿@using EPiServer.Web
+@using EPiServer.Core
+@model IPageViewModel<SitePageData>
+
+@* @functions {
+    private HelperResult RenderMenuItems(HtmlHelpers.MenuItem item)
+    {
+        return new HelperResult(async writer =>
+        {
+            await writer.WriteAsync("<li>");
+            await writer.WriteAsync(Html.PageLink(item.Page, null, new { @class = "nav-link" + (item.Selected ? " active" : "") }).ToString());
+
+            if (item.HasChildren != null && item.HasChildren.Value)
+            {
+                var children = GetChildren(item);
+
+                if (children.Any())
+                {
+                    foreach (var child in children)
+                    {
+                        await writer.WriteAsync(RenderMenuItems(child).ToString());
+                    }
+                }
+            }
+
+            await writer.WriteAsync("</li>");
+        });
+    }
+
+    private IEnumerable<HtmlHelpers.MenuItem> GetChildren(HtmlHelpers.MenuItem item)
+    {
+        return item.HasChildren;
+    }
+} *@
+
+@{
+    HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
+    {
+        <li class="nav-item">
+            @Html.PageLink(item.Page, null, new { @class = "nav-link" + (item.Selected ? " active" : null) })
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+<!-- ##### Header Area Start ##### -->
+<div id="ll-nav-wapper" class="frame-size-70">
+    <a class="ll-logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+        <div epi-property="@Model.Layout.Logotype" />
+    </a>
+    <a id="btn_hamburger" class="button-hamburger">
+    </a>
+    <ul class="nav">
+        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate)
+    </ul>
+</div>
+<!-- ##### Header Area End ##### -->

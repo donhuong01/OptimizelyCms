@@ -1,0 +1,13 @@
+﻿@using Blend.Cms12.Models.Blocks.Malls
+@using EPiServer.Core
+
+@model ParticipatingMallBlock
+
+<a class="ll-mall-item content-center" href="@Url.ContentUrl(Model.LinkMall)" target="_blank"
+   rel="noreferrer">
+    <div class="thumb padding-box-75"
+         style="background-image: url('@Url.ContentUrl(Model.BackgroundImage)')"></div>
+    <span class="title font_larger uppercase">
+        @Model.Heading
+    </span>
+</a>

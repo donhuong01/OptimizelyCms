@@ -1,0 +1,15 @@
+﻿@using Blend.Cms12.Models.Blocks.Hero
+@model HeroBlock
+
+<section class="hero-area">
+    <div class="hero-slides owl-carousel">
+        @foreach (var item in Model.Slides.Items)
+        {
+            var block = item.GetContent() as SingleHeroSlideBlock;
+            if (block != null)
+            {
+                await Html.RenderPartialAsync("SingleHeroSlideBlock", block);
+            }
+        }
+    </div>
+</section>

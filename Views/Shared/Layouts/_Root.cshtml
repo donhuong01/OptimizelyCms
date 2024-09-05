@@ -1,0 +1,84 @@
+@using EPiServer.Framework.Web.Mvc.Html
+
+@model IPageViewModel<SitePageData>
+
+<!DOCTYPE html>
+<html lang="@(Model.CurrentPage.Language)">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.CurrentPage.MetaTitle</title>
+    @if (Model.CurrentPage.MetaKeywords != null && Model.CurrentPage.MetaKeywords.Count > 0)
+    {
+        <meta name="keywords" content="@string.Join(",", Model.CurrentPage.MetaKeywords)" />
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.CurrentPage.MetaDescription))
+    {
+        <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+    }
+    @Html.CanonicalLink()
+    @Html.AlternateLinks()
+    <link rel="icon" href="~/css/images/fav.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/css/images/fav.ico" type="image/x-icon" />
+
+    <link href="~/css/combine/2b2351439812be67966ef4bc9d25555c-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/42318c493c8a4be799c66c3e38d55b50-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/47e662ec76293546b1986e4e5e3e5a7a-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/5c2d299ca251dfb8ef6e4a1781b3f360-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/8f57ec5ea6e405c01933331cf59f89be-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/aeb787ce68524a4dfcc93f4b835bfb25-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/c310ecd6922b2d85485a4b3a4dcbc048-1693234940.css" rel="stylesheet" />
+    <link href="~/css/combine/f77f604f2e2af36621959791244a1be2-1693234940.css" rel="stylesheet" />
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125137894-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-125137894-2');
+    </script>
+    <link href="~/css/combine/08ffd1befc0e5bfdd1de542444c97f58-1693234940.css" rel="stylesheet" />
+    <required-client-resources area="Header" />
+</head>
+
+<body>
+    <div id="ll-app">
+        @if (Model.Layout.IsInReadonlyMode)
+        {
+            await Html.RenderPartialAsync("Readonly", Model);
+        }
+
+        @await Html.RenderEPiServerQuickNavigatorAsync()
+
+        @Html.FullRefreshPropertiesMetaData()
+
+        @if (!Model.Layout.HideHeader)
+        {
+            await Html.RenderPartialAsync("Header", Model);
+        }
+
+        @RenderBody()
+
+        @if (!Model.Layout.HideFooter)
+        {
+            await Html.RenderPartialAsync("Footer", Model);
+        }
+        <required-client-resources area="Footer" />
+
+        <!-- Scripts -->
+        <script src="~/js/components/ll-slideshow.js"></script>
+        <script src="~/js/common.js"></script>
+        <script src="~/js/framework.js"></script>
+        <script src="~/js/framework.extras.js"></script>
+        <link rel="stylesheet" property="stylesheet" href="~/css/framework.extras.css">
+        <script src="~/js/home.js"></script>
+        <script src="~/js/login.js"></script>
+
+    </div>
+</body>
+</html>

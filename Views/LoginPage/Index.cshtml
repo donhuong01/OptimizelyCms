@@ -1,0 +1,95 @@
+﻿@inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<Blend.Cms12.Models.Pages.LoginPage>>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{
+    await Html.RenderPartialAsync("Breadcrumbs", Model);
+}
+
+<div id="pn_login_root" class="ll-frame frame-size-70">
+    <span class="font_x_extreme uppercase
+            bold padding-box-top-bot-3 box-size-100 inline-block content-center">
+        Welcome to LENDLEASE PLUS! Please login.
+    </span>
+    <div id="pn_login_info">
+        <span id="lb_ext_error" class="error box-size-100 margin-bottom-large inline-block content-center"
+              style="text-align: center !important;">
+            Error Message
+        </span>
+        <form method="POST" autocomplete="off" data-request="onMemberLogin" data-request-validate>
+            <div class="box-size-48 to-left">
+                <div class="ll-widget-col-input">
+                    <span>Phone Number</span>
+                    <span class="holder-text">
+                        +65
+                    </span>
+                    <input id='txt_phone' name="phone" type="text" />
+                </div>
+                <span class="box-size-100 padding-box-top-bot-5 inline-block content-center"></span>
+                <div class="ll-widget-col-input margin-top-x-extreme">
+                    <span>Password</span>
+                    <input id='txt_password' name="password" type="password" />
+                </div>
+                <a id="btn_forgot_pass" href="https://www.lendleaseplus.com/login/forget-password">
+                    Forgot
+                    password?
+                </a>
+            </div>
+            <div class="box-size-48 to-right">
+                <button type="submit" id="btn_login" class="ll-widget-rounder-button box-size-100"
+                        style="padding-top: 0.9em; padding-bottom: 0.9em;">
+                    <span>Login</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '298321354297999',
+            cookie: true,
+            xfbml: true,
+            version: 'v3.2'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $(window).on('ajaxInvalidField', function (event, fieldElement, fieldName, errorMsg, isFirst) {
+        var field = {};
+        field[fieldName] = errorMsg[0];
+        onBEValidateError(field);
+    });
+
+    $("#btn_facebook").on('click', function () {
+        $("#lb_ext_error").text("").hide();
+
+        FB.login(function (response) {
+            var accessToken = response.authResponse.accessToken;
+            var userId = response.authResponse.userID;
+
+            $.request('Login::onFacebookLogin', {
+                data: { userId: userId, accessToken: accessToken },
+                error: function (response) {
+                    console.log(response);
+                    $("#lb_ext_error").text(response.responseJSON.X_OCTOBER_ERROR_MESSAGE).show();
+                }
+            });
+        }, { scope: 'email' });
+    });
+
+</script>

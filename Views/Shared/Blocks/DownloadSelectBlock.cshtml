@@ -1,0 +1,10 @@
+﻿@using Blend.Cms12.Models.Blocks.DownloadApp
+@using EPiServer.Core
+
+@model DownloadSelectBlock
+
+<a class="ll-widget-rounder-button"
+   href="@Url.ContentUrl(Model.ButtonLink)" target="_blank"
+   rel="noreferrer">
+    <span class="ic_download">@Model.ButtonText</span>
+</a>

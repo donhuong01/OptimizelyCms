@@ -1,0 +1,48 @@
+﻿@media only screen and (max-width: 720px) {
+    body,
+    .font_medium,
+    .ll-widger-rounder-button,
+    .nav,
+    button,
+    select,
+    input {
+        font-size: 2.5vw;
+    }
+
+
+    body {
+        line-height: 1.8em;
+    }
+
+    .frame-size-80 {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .frame-size-70 {
+        width: 100%;
+        padding-left: 3%;
+        padding-right: 3%;
+        box-sizing: border-box;
+        margin-left: 0%;
+    }
+
+    .frame-size-60 {
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .frame-size-50 {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .box-size-100 {
+        width: 100%;
+    }
+
+
+    .ll-sub-menu-wrapper {
+        overflow-x: auto;
+    }
+}

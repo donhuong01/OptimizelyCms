@@ -1,0 +1,13 @@
+@inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<StartPage>>
+
+@{
+    foreach (var item in Model.CurrentPage.MainContentArea?.FilteredItems ?? Enumerable.Empty<ContentAreaItem>())
+    {
+        var content = item.GetContent();
+
+        if (content != null)
+        {
+            Html.RenderContentData(content, false);
+        }
+    }
+}

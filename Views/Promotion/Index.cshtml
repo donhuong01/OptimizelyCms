@@ -1,0 +1,14 @@
+﻿@model PromotionModel
+
+<div class="promotion-section">
+    <h2>Promotions</h2>
+    @foreach (var promo in Model.Promotions)
+    {
+        <div class="promotion-item">
+            <img src="@Url.ContentUrl(promo.Image)" alt="@promo.Title" />
+            <h3>@promo.Title</h3>
+            <p>@promo.Description</p>
+            <p>@promo.StartDate.ToString("dd MMM yyyy") - @promo.EndDate.ToString("dd MMM yyyy")</p>
+        </div>
+    }
+</div>

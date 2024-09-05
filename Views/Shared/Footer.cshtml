@@ -1,0 +1,43 @@
+@model IPageViewModel<SitePageData>
+
+<!-- ##### Footer Area Start ##### -->
+<div id='ll-footer'>
+    <div class="frame-size-70">
+        <ul>
+            <li class="  ">
+                <a href="https://www.lendlease.com/sg/about-us/" target="_blank">
+                    <span>About Lendlease</span>
+                </a>
+
+            </li>
+            <li class="  ">
+                <a href="/contact-us">
+                    <span>Contact Us</span>
+                </a>
+
+            </li>
+            <li class="  ">
+                <a href="/terms-of-use">
+                    <span>Terms of Use</span>
+                </a>
+
+            </li>
+            <li class="  ">
+                <a href="#">
+                    <span>Privacy Policy</span>
+                </a>
+
+            </li>
+            <li class="  ">
+                <a href="https://app.lendleaseplus.com">
+                    <span>Tenant Login</span>
+                </a>
+
+            </li>
+        </ul>
+        <span>
+            @Html.Raw(Model.Layout.FooterCopyright.Title)
+        </span>
+    </div>
+</div>
+<!-- ##### Footer Area End ##### -->

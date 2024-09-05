@@ -1,0 +1,22 @@
+﻿@using Blend.Cms12.Models.Blocks.Hero
+@using EPiServer.Core
+
+@model SingleHeroSlideBlock
+
+<div class="single-hero-slide d-flex align-items-center justify-content-center">
+    <!-- Slide Img -->
+    <div class="slide-img bg-img" style="background-image: url('@Url.ContentUrl(Model.BackgroundImage)');"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <!-- Slide Content -->
+                <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                    <div class="line" data-animation="fadeInUp" data-delay="300ms"></div>
+                    <h2 data-animation="fadeInUp" data-delay="500ms">@Model.Heading</h2>
+                    <p data-animation="fadeInUp" data-delay="700ms">@Model.Description</p>
+                    <a href="@Model.ButtonLink" class="btn palatin-btn mt-50" data-animation="fadeInUp" data-delay="900ms">@Model.ButtonText</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
