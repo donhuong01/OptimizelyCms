@@ -1,7 +1,7 @@
-@using EPiServer.Core
+﻿@using EPiServer.Core
 @using EPiServer.Web
 
-@*Helper used as template for a page in the bread crumb, recursively triggering the rendering of the next page*@
+@* Helper used as template for a page in the bread crumb, recursively triggering the rendering of the next page *@
 
 @{
     HelperResult ItemTemplate(HtmlHelpers.MenuItem breadCrumbItem)
@@ -10,13 +10,13 @@
         {
             if (breadCrumbItem.Page.HasTemplate() && !breadCrumbItem.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink))
             {
-                <li class="breadcrumb-item">
+                <li>
                     @Html.PageLink(breadCrumbItem.Page)
                 </li>
             }
             else
             {
-                <li class="breadcrumb-item active" aria-current="page">
+                <li>
                     @breadCrumbItem.Page.PageName
                 </li>
             }
@@ -35,6 +35,7 @@
     <ul>
         <li>
             <a epi-property="@SiteDefinition.Current.StartPage" />
+            <span> > </span>
         </li>
         @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate, requireVisibleInMenu: false, requirePageTemplate: false)
     </ul>
