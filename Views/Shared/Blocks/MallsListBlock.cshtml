@@ -1,0 +1,16 @@
+﻿@using Blend.Cms12.Models.Blocks.Malls
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model MallsListBlock
+
+@if (Model.Malls != null && Model.Malls.Any())
+{
+    @foreach (var mall in Model.Malls)
+    {
+        await Html.RenderPartialAsync("MallInfoBlock", mall);
+    }
+}
+else
+{
+    <p>No malls information available.</p>
+}

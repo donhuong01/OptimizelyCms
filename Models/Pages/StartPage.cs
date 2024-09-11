@@ -26,7 +26,10 @@ namespace Blend.Cms12.Models.Pages;
         typeof(LandingPage),
         typeof(ContentFolder),
         typeof(LoginPage),
-        typeof(SignUpPage)
+        typeof(SignUpPage),
+        typeof(MallPage), 
+        typeof(ContactUsPage), 
+        typeof(DownloadAppPage), 
     ], // Pages we can create under the start page...
     ExcludeOn =
     [
@@ -36,7 +39,10 @@ namespace Blend.Cms12.Models.Pages;
         typeof(ISearchPage),
         typeof(LandingPage),
         typeof(LoginPage),
-        typeof(SignUpPage)
+        typeof(SignUpPage),
+        typeof(MallPage),
+        typeof(ContactUsPage),
+        typeof(DownloadAppPage),
     ])] // ...and underneath those we can't create additional start pages
 public class StartPage : SitePageData
 {

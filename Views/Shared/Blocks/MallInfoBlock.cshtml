@@ -1,0 +1,39 @@
+﻿@using Blend.Cms12.Models.Blocks.Malls
+@model MallInfoBlock
+
+<div class="ll-mall ll-frame frame-size-70 padding-box-top-bot-5 border-bottom-dark">
+    <!-- Mall image -->
+    <a href="@Url.ContentUrl(Model.LinkMall)" target="_blank" rel="noreferrer" class="box-size-48 to-left">
+        <img src="@Url.ContentUrl(Model.BackgroundImage)" class="box-size-100" />
+    </a>
+    <!-- Article -->
+    <div class="box-size-50 to-right">
+        <span class="box-size-100 title bold font_extreme inline-block padding-box-bottom-5 uppercase">
+            @Model.Heading
+        </span>
+        <span class="ic_location inline-block margin-bottom-large">
+            @Model.Address - <a href="@Url.ContentUrl(Model.LinkGoogleMall)" target="_blank"
+                                                    rel="noreferrer" class="underline"> Getting there</a>
+        </span>
+        <span class="ic_clock inline-block margin-bottom-large">
+            @Model.TimeOpen
+        </span>
+        <div class="mall-description padding-box-top-bot-10 ">
+            <span class="title inline-block to-left box-size-100">
+                Description
+            </span>
+            <span>
+                <p>
+                    @Model.Description
+                </p>
+            </span>
+        </div>
+        <a class="linked inline-block to-left" href="@Url.ContentUrl(Model.LinkMall)" target="_blank"
+           rel="noreferrer">
+            website
+            <span class="font_small">&nbsp❯&nbsp</span>
+            @Url.ContentUrl(Model.LinkMall)
+        </a>
+    </div>
+
+</div>

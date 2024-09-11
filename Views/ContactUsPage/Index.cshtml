@@ -1,0 +1,86 @@
+﻿@model PageViewModel<ContactUsPage>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+}
+
+<form data-request="onSend" data-request-validate data-request-success="refreshCaptcha()">
+    <div class="ll-form ll-frame frame-size-70">
+        <span class="font_x_extreme bold padding-box-top-bot-3 uppercase">Send us a message</span>
+        <!-- Row 1 -->
+        <!-- col 1 -->
+        <div class="box-size-25 to-left">
+            <div class="ll-widget-col-input box-size-100">
+                <span>Name*</span>
+                <input id='txt_name' name="name" type="text" />
+            </div>
+
+            <div class="ll-widget-col-input box-size-100">
+                <span>Mobile*</span>
+                <span class="holder-text">
+                    +65
+                </span>
+                <input id='txt_mobile' type="text" name="mobile" />
+            </div>
+
+
+            <div class="ll-widget-col-input box-size-100" style="width: 100%;margin-left: 0">
+                <span>Email</span>
+                <input id='txt_email' type="text" name="email" />
+            </div>
+
+        </div>
+
+        <div class="ll-widget-col-input box-size-30" style='margin-left: 5%; margin-right: 5%'>
+            <span>Feedback*</span>
+            <select name="enquiry" id="dropdown_enquiry">
+                <option value="Feedback on Mobile Application" selected>Feedback on Mobile Application</option>
+                <option value="Lendlease Plus Program Enquiries">Lendlease Plus Program Enquiries</option>
+            </select>
+        </div>
+
+        <div class="ll-widget-col-input to-right box-size-35">
+            <span>Subject</span>
+            <input id="txt_subject" name="subject" type="text" value="" />
+        </div>
+
+        <div class="ll-widget-col-input box-size-70" style="margin-left: 5%;margin-bottom: 0">
+            <span>Your Message*</span>
+            <textarea rows="5" name="message" wrap="hard" style="line-height: 1.4em"
+                      id="txt_message"></textarea>
+        </div>
+
+
+        <!-- Row 3 -->
+        <!-- Captcha -->
+        <!-- Dev -->
+        <div class="box-size-100  inline-block  padding-box-5">
+            <div id="recaptcha" class="g-recaptcha to-right" data-callback="onCaptchaValid"
+                 data-sitekey="6Ld9Y3YUAAAAAGEPcgdT2Gj1WxiXEk4IKW1bSWet"></div>
+        </div>
+
+
+        <!-- Row 4 - submit -->
+        <div id="panel_submit"
+             class="box-size-100 inline-block padding-box-top-bot-2 child-space-horz-10 content-right">
+            <button id='btn_submit' class="ll-widget-rounder-button ">
+                Submit
+            </button>
+
+        </div>
+    </div>
+</form>
+<p class="padding-box-4"></p>
+
+<script>
+    $(window).on('ajaxInvalidField', function (event, fieldElement, fieldName, errorMsg, isFirst) {
+        var field = {};
+        field[fieldName] = errorMsg[0];
+        onBEValidateError(field);
+    });
+
+    function refreshCaptcha() {
+        grecaptcha.reset();
+    }
+
+</script>

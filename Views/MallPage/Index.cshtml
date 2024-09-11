@@ -1,0 +1,19 @@
+﻿@model PageViewModel<MallPage>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+@{
+    await Html.RenderPartialAsync("Breadcrumbs", Model);
+}
+@{
+    foreach (var item in Model.CurrentPage.MainContentArea?.FilteredItems ?? Enumerable.Empty<ContentAreaItem>())
+    {
+        var content = item.GetContent();
+
+        if (content != null)
+        {
+            Html.RenderContentData(content, false);
+        }
+    }
+}

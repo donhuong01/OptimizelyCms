@@ -1,8 +1,19 @@
 @inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<Blend.Cms12.Models.Pages.StandardPage>>
 
 @{
-    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
 }
+
+<div ll-hashtag-listener='' class="box-size-100 ">
+    <h2 epi-property="@Model.CurrentPage.PageName">@Model.CurrentPage.PageName</h2>
+    <p epi-property="@Model.CurrentPage.MetaDescription">@Model.CurrentPage.MetaDescription</p>
+    <div>
+        <div epi-property="@Model.CurrentPage.MainBody" />
+    </div>
+    <div class="pn_article_content box-size-100">
+        <br>
+    </div>
+</div>
 @{
     foreach (var item in Model.CurrentPage.MainContentArea?.FilteredItems ?? Enumerable.Empty<ContentAreaItem>())
     {
