@@ -641,6 +641,7 @@ ul {
         left: 6pt;
         right: 6pt;
         height: auto;
+        background: url('../../img/border_selected.png');
         background-size: 120% auto;
         background-position: 10% center;
         background-repeat: repeat-y;
@@ -743,6 +744,7 @@ ul {
         height: 0.2em;
         bottom: 0;
         left: 0;
+        background-image: url('../../img/border_selected.png');
         background-repeat: no-repeat;
         border-radius: 10px;
         background-size: 100% 100%;
@@ -1051,3 +1053,4 @@ div:has(.coming-soon) {
                     .ll-sub-menu-wrapper .sub-menu li a.border-selected::after {
                         bottom: 0em;
                     }
+

@@ -1,76 +1,111 @@
 ﻿@using EPiServer.Web
 @using EPiServer.Core
 @using static Blend.Cms12.Helpers.HtmlHelpers
-@inject IContentLoader contentLoader
 @model IPageViewModel<SitePageData>
 
 @{
     HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
     {
-        @if(item.HasChildren != null)
+        <li>
+            <a style="cursor: default;" href="@Url.ContentUrl(item.Page.PageLink)" class="arrow">
+                @item.Page.PageName
+            </a>
+            <ul>
+                @Html.MenuList(item.Page.ContentLink, ItemSubMenuTemplate)
+            </ul>
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+
+    HelperResult ItemSubMenuTemplate(HtmlHelpers.MenuItem item)
+    {
+        if (item.HasChildren != null)
         {
-            <li class="nav-item">
-                <a style="cursor: default;" href="@Url.ContentUrl(item.Page.PageLink)" class="arrow @(item.Selected ? " child-active" : null)">
-                    @item.Page.PageName
+            <li>
+                <a class="  " href="@Url.ContentUrl(item.Page.ContentLink)">
+                    <span> @item.Page.PageName</span>
                 </a>
-                @if (item.Selected)
-                {
-                    <ul class="sub-menu">
-                        @Html.MenuList(item.Page.ContentLink, ItemTemplate)
-                    </ul>
-                }
             </li>
         }
         return new HelperResult(w => Task.CompletedTask);
     }
 }
+
 <!-- ##### Header Area Start ##### -->
 <div id="ll-nav-wapper" class="frame-size-70">
-    <a class="ll-logo" href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+    <a class="ll-logo" href="/" title="@Model.Layout.Logotype.Title">
         <div epi-property="@Model.Layout.Logotype" />
     </a>
     <a id="btn_hamburger" class="button-hamburger">
     </a>
     <ul class="nav">
-        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate)
+        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate, includeRoot: true, requireVisibleInMenu: true, requirePageTemplate: false)
     </ul>
 </div>
 <!-- ##### Header Area End ##### -->
 
 <style>
-    .nav-item {
+    #ll-nav-wapper .nav li {
+        height: 100%;
+        display: inline-block;
+        padding-top: 1.55em;
+        padding-bottom: 1.55em;
         position: relative;
+        float: left;
     }
 
-    .arrow {
-        text-decoration: none;
-        display: block;
-        padding: 10px;
-        color: #000;
-    }
+        #ll-nav-wapper .nav li a {
+            margin-left: 0.65em;
+            margin-right: 0.5em;
+            display: block;
+            float: left;
+            position: relative;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+        }
 
-    .nav-item .sub-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #fff;
-        padding: 0;
+        #ll-nav-wapper .nav li ul {
+            position: absolute;
+            left: 6pt;
+            right: 6pt;
+            height: auto;
+            background: url('../../img/border_selected.png');
+            background-size: 120% auto;
+            background-position: 10% center;
+            background-repeat: repeat-y;
+            top: 3.4em;
+            z-index: 1000;
+            display: none;
+            text-align: center;
+            border-radius: 2pt;
+            min-width: 9.5em;
+        }
+
+            #ll-nav-wapper .nav li ul li:first-child {
+                padding-top: 1.6em;
+            }
+
+        #ll-nav-wapper .nav li li a span {
+            position: relative;
+            display: inline-block;
+        }
+
+        #ll-nav-wapper .nav li ul li {
+            width: 100%;
+            display: block;
+            float: left;
+            padding-top: 0.8em;
+            padding-bottom: 0.8em;
+        }
+
+    #ll-nav-wapper .nav li ul li a {
+        width: 100%;
         margin: 0;
-        list-style-type: none; 
-        z-index: 1000;
-        min-width: 150px;
-        border: 1px solid #ddd; 
+        color: #fff;
+        display: inline-block;
+        margin: auto;
+        padding: 0;
+        float: none;
+        text-align: center;
     }
-
-    .nav-item:hover > .sub-menu {
-        display: block;
-    }
-
-
-    .nav-item ul li a:hover {
-        background-color: #f0f0f0;
-        color: #000;
-    }
-
 </style>

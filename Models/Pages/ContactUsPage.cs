@@ -9,8 +9,11 @@ namespace Blend.Cms12.Models.Pages
     GroupName = Globals.GroupNames.Contact)]
     [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-product.png")]
     [AvailableContentTypes(
-    Availability = Availability.Specific,
-    IncludeOn = [typeof(StartPage)])]
+    Availability.Specific,
+    Include =
+    [
+        typeof(ContainerPage)
+    ])]
     public class ContactUsPage : StandardPage
     {
         [Display(

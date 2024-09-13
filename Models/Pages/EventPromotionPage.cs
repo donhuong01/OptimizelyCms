@@ -1,44 +1,50 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Blend.Cms12.Business.Rendering;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 
 namespace Blend.Cms12.Models.Pages
 {
-    [ContentType(DisplayName = "Promotion", GUID = "0F4E4A39-B814-4194-848F-A4A9330FF68F", Description = "Promotion content type")]
-    public class PromotionPage : StandardPage
+    [SiteContentType(
+    DisplayName = "Event/Promotion",
+    GUID = "8DBF6313-1EAC-425D-8F21-FC2FA1B9928F",
+    GroupName = Globals.GroupNames.Specialized,
+    Description = "Event/Promotion content type")]
+    [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-contact.png")]
+    public class EventPromotionPage : SitePageData, IContainerPage
     {
         [Display(
             Name = "Title",
-            Description = "Promotion title",
+            Description = "Event/Promotion title",
             GroupName = SystemTabNames.Content,
-            Order = 1)]
+            Order = 10)]
         public virtual string Title { get; set; }
 
         [Display(
             Name = "Image",
-            Description = "Promotion image",
+            Description = "Event/Promotion image",
             GroupName = SystemTabNames.Content,
-            Order = 2)]
+            Order = 20)]
         public virtual ContentReference Image { get; set; }
 
         [Display(
             Name = "Description",
-            Description = "Promotion description",
+            Description = "Event/Promotion description",
             GroupName = SystemTabNames.Content,
-            Order = 3)]
+            Order = 30)]
         public virtual XhtmlString Description { get; set; }
 
         [Display(
             Name = "Start Date",
-            Description = "Promotion start date",
+            Description = "Event/Promotion start date",
             GroupName = SystemTabNames.Content,
-            Order = 4)]
+            Order = 40)]
         public virtual DateTime StartDate { get; set; }
 
         [Display(
             Name = "End Date",
-            Description = "Promotion end date",
+            Description = "Event/Promotion end date",
             GroupName = SystemTabNames.Content,
-            Order = 5)]
+            Order = 50)]
         public virtual DateTime EndDate { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿@model PageViewModel<ContactUsPage>
+﻿@inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<ContactUsPage>>
 
 @{
-    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+    await Html.RenderPartialAsync("Breadcrumbs", Model);
 }
 
 <form data-request="onSend" data-request-validate data-request-success="refreshCaptcha()">

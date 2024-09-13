@@ -60,6 +60,8 @@ public class Globals
         public const string Contact = "contact";
         public const string Strings = "StringList";
         public const string StringsCollection = "StringsCollection";
+        public const string Event = "event";
+        public const string Promotion = "promotion";
     }
 
     /// <summary>

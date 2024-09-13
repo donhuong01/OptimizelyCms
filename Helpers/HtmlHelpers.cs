@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using Blend.Cms12.Business;
+using Blend.Cms12.Models.Pages;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
@@ -37,7 +38,8 @@ public static class HtmlHelpers
         var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
 
         IEnumerable<PageData> filter(IEnumerable<PageData> pages)
-            => pages.FilterForDisplay(requirePageTemplate, requireVisibleInMenu);
+       => pages.FilterForDisplay(requirePageTemplate, requireVisibleInMenu)
+               .Where(page => page is not StartPage);
 
         var pagePath = contentLoader.GetAncestors(currentContentLink)
             .Reverse()
@@ -46,13 +48,18 @@ public static class HtmlHelpers
             .ToList();
 
         var menuItems = contentLoader.GetChildren<PageData>(rootLink)
-            .FilterForDisplay(requirePageTemplate, requireVisibleInMenu)
-            .Select(x => CreateMenuItem(x, currentContentLink, pagePath, contentLoader, filter))
-            .ToList();
+        .FilterForDisplay(requirePageTemplate, requireVisibleInMenu)
+        .Where(x => x is not StartPage)
+        .Select(x => CreateMenuItem(x, currentContentLink, pagePath, contentLoader, filter))
+        .ToList();
 
         if (includeRoot)
         {
-            menuItems.Insert(0, CreateMenuItem(contentLoader.Get<PageData>(rootLink), currentContentLink, pagePath, contentLoader, filter));
+            var rootPage = contentLoader.Get<PageData>(rootLink);
+            if (rootPage is not StartPage)
+            {
+                menuItems.Insert(0, CreateMenuItem(rootPage, currentContentLink, pagePath, contentLoader, filter));
+            }
         }
 
         var buffer = new StringBuilder();

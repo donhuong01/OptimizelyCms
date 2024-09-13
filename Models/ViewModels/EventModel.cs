@@ -4,6 +4,6 @@ namespace Blend.Cms12.Models.ViewModels
 {
     public class EventModel
     {
-        public IEnumerable<EventPage> Events { get; set; }
+        public IEnumerable<EventPromotionPage> Events { get; set; }
     }
 }

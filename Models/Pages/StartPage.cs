@@ -39,10 +39,7 @@ namespace Blend.Cms12.Models.Pages;
         typeof(ISearchPage),
         typeof(LandingPage),
         typeof(LoginPage),
-        typeof(SignUpPage),
-        typeof(MallPage),
-        typeof(ContactUsPage),
-        typeof(DownloadAppPage),
+        typeof(SignUpPage)
     ])] // ...and underneath those we can't create additional start pages
 public class StartPage : SitePageData
 {

@@ -1,8 +1,5 @@
-﻿@model PageViewModel<MallPage>
+﻿@inherits Blend.Cms12.Views.AlloyPageBase<PageViewModel<MallPage>>
 
-@{
-    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
-}
 @{
     await Html.RenderPartialAsync("Breadcrumbs", Model);
 }
